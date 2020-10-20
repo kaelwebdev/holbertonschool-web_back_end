@@ -1,4 +1,3 @@
-  
 #!/usr/bin/env python3
 """
     function element_length with annotations.
