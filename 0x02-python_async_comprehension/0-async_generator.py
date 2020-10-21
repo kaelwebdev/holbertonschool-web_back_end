@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
     function async_generator with yield and async/await
-    
 """
 
 import asyncio
