@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" 
+"""
     FIFOCache:
     it is a class that can
     add an item in the cache using FIFO
@@ -8,7 +8,7 @@ BaseCaching = __import__('base_caching').BaseCaching
 
 
 class FIFOCache(BaseCaching):
-    """ 
+    """
     manage the cache
     """
 
