@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
     BasicCache:
-    it is a class with 
+    it is a class with
     simple cache storage technique
 """
 BaseCaching = __import__('base_caching').BaseCaching
