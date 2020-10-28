@@ -52,7 +52,7 @@ class Server:
         end = min(index + page_size, len(self.indexed_dataset()))
         try:
             tmp = []
-            for x in range(index, end)
+            for x in range(index, end):
                 tmp.append(self.indexed_dataset()[x])
             data = tmp
         except Exception:
