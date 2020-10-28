@@ -49,7 +49,7 @@ class Server:
         """
         assert type(index) is int and type(page_size) is int
         assert 0 <= index < len(self.indexed_dataset())
-        
+
         return {
             "index": index,
             "data": self.dataset()[index: index + page_size],
