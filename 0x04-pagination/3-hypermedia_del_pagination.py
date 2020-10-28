@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """
-Deletion-resilient hypermedia pagination
+    Deletion-resilient hypermedia pagination
+    The goal here is that if between two queries,
+    certain rows are removed from the dataset,
+    the user does not miss items from dataset when changing page.
 """
 
 import csv
@@ -39,5 +42,30 @@ class Server:
             }
         return self.__indexed_dataset
 
-    def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
-            pass
+    def get_hyper_index(self, index: int = None, page_size: int = 10) ->\
+            Dict[str, Any]:
+        """
+            returns information without considering the deleted indices
+        """
+        assert type(index) is int and type(page_size) is int
+        assert 0 <= index < len(self.indexed_dataset())
+        end = min(index + page_size, len(self.indexed_dataset()))
+        try:
+            tmp = []
+            for x in range(index, end)
+                tmp.append(self.indexed_dataset()[x])
+            data = tmp
+        except Exception:
+            data = self.get_hyper_index(index + 1, page_size)["data"]
+            return {
+                "index": index,
+                "data": data,
+                "page_size": page_size,
+                "next_index": index + page_size + 1
+            }
+        return {
+            "index": index,
+            "data": data,
+            "page_size": page_size,
+            "next_index": index + page_size
+        }
