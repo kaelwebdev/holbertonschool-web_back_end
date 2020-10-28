@@ -49,23 +49,10 @@ class Server:
         """
         assert type(index) is int and type(page_size) is int
         assert 0 <= index < len(self.indexed_dataset())
-        end = min(index + page_size, len(self.indexed_dataset()))
-        try:
-            tmp = []
-            for x in range(index, end):
-                tmp.append(self.indexed_dataset()[x])
-            data = tmp
-        except Exception:
-            data = self.get_hyper_index(index + 1, page_size)["data"]
-            return {
-                "index": index,
-                "data": data,
-                "page_size": page_size,
-                "next_index": index + page_size + 1
-            }
+        
         return {
             "index": index,
-            "data": data,
-            "page_size": page_size,
+            "data": self.dataset()[index: index + page_size],
+            "page_size": len(self.dataset()[index: index + page_size]),
             "next_index": index + page_size
         }
