@@ -5,6 +5,9 @@ RedactingFormatter
 import logging
 from typing import List
 import re
+import os
+import csv
+import mysql.connector
 
 PII_FIELDS = ("name", "email", "phone", "ssn", "ip")
 
