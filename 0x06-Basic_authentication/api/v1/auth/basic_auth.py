@@ -56,7 +56,13 @@ class BasicAuth(Auth):
 
     def current_user(self, request=None) -> TypeVar('User'):
         """
-        overloads Auth and retrieves the User instance for a request
+        Overloads Auth and retrieves the User instance for a request.
+        Process example:
+        1. Basic Ym9iQGhidG4uaW86SDBsYmVydG9uU2Nob29sOTgh
+        2. Ym9iQGhidG4uaW86SDBsYmVydG9uU2Nob29sOTgh
+        3. bob@hbtn.io:H0lbertonSchool98!
+        4. ('bob@hbtn.io', 'H0lbertonSchool98!')
+        5. return User instance with email and pwd
         """
         h = self.authorization_header(request)
         if not h:
