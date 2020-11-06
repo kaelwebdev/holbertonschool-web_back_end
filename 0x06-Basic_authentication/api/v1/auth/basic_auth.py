@@ -27,3 +27,10 @@ class BasicAuth(Auth):
             return h
         except BaseException:
             return None
+
+    def extract_user_credentials(self, base64_auth_header: str) -> (str, str):
+        """ return information in tuple form. (username, password). """
+        if base64_auth_header is None or type(base64_auth_header) is not str \
+                or ':' not in base64_auth_header:
+            return (None, None)
+        return tuple(base64_auth_header.split(':', 1))
