@@ -45,9 +45,12 @@ class BasicAuth(Auth):
         if user_email is None or user_pwd is None or \
                 type(user_email) is not str or type(user_pwd) is not str:
             return None
-
-        users = User.search({'email': user_email})
-
+        try:
+            users = User.search({'email': user_email})
+        except Exception:
+            return None
+        if len(users) == 0:
+            return None
         for user in users:
             if user.is_valid_password(user_pwd):
                 return user
