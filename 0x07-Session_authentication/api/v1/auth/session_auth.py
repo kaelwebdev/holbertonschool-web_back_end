@@ -2,7 +2,8 @@
 """
 session authentication
 """
+from api.v1.auth.auth import Auth
 
 
-class SessionAuth:
+class SessionAuth(Auth):
     pass
