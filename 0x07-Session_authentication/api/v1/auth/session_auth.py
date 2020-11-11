@@ -2,3 +2,7 @@
 """
 session authentication
 """
+
+
+class SessionAuth:
+    pass
