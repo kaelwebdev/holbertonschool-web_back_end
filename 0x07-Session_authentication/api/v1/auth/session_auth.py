@@ -54,7 +54,7 @@ class SessionAuth(Auth):
         if not c:
             return False
         u_id = self.user_id_for_session_id(c)
-        if not user_id:
+        if not u_id:
             return False
         self.u_id_by_session_id.pop(c)
         return True
