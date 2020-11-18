@@ -52,4 +52,7 @@ class DB:
         """
         if not kwargs:
             raise InvalidRequestError
-        return self._session.query(User).filter_by(**kwargs).one()
+        u = self._session.query(User).filter_by(**kwargs).one()
+        if u is None:
+            raise NoResultFound
+        return u
