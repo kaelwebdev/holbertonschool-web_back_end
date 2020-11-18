@@ -54,7 +54,7 @@ class DB:
         """
         return self._session.query(User).filter_by(**kwargs).one()
 
-    def update_user(self, user_id: int, **kwargs: dict) -> None:
+    def update_user(self, user_id: int, **kwargs) -> None:
         """
         locate user and update info at keyword argument
         """
