@@ -43,3 +43,11 @@ class DB:
         self._session.add(n_user)
         self._session.commit()
         return n_user
+
+    def find_user_by(self, **kwargs: dict) -> User:
+        """
+        takes in arbitrary keyword arguments and returns
+        the first row found in the users table as
+        filtered by the method’s input arguments
+        """
+        return self._session.query(User).filter_by(**kwargs).one()
