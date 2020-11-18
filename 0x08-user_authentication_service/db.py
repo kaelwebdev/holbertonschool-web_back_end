@@ -50,4 +50,6 @@ class DB:
         the first row found in the users table as
         filtered by the method’s input arguments
         """
+        if not kwargs:
+            raise InvalidRequestError
         return self._session.query(User).filter_by(**kwargs).one()
