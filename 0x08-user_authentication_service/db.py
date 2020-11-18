@@ -58,7 +58,7 @@ class DB:
         for k in kwargs.keys():
             if k not in c_names:
                 raise InvalidRequestError
-        u = self._session.query(User).filter_by(**kwargs).one()
+        u = self._session.query(User).filter_by(**kwargs).first()
         if u is None:
             raise NoResultFound
         return u
