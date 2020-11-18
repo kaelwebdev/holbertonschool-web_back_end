@@ -6,6 +6,8 @@ Database module
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.exc import InvalidRequestError
+from sqlalchemy.orm.exc import NoResultFound
 from typing import TypeVar
 from user import Base
 from user import User
@@ -52,6 +54,10 @@ class DB:
         """
         if not kwargs:
             raise InvalidRequestError
+        c_names = User.__table__.columns.keys()
+        for k in kwargs.keys():
+            if k not in c_names:
+                raise InvalidRequestError
         u = self._session.query(User).filter_by(**kwargs).one()
         if u is None:
             raise NoResultFound
