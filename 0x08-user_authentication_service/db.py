@@ -53,3 +53,15 @@ class DB:
         filtered by the method’s input arguments
         """
         return self._session.query(User).filter_by(**kwargs).one()
+
+    def update_user(self, user_id: int, **kwargs: dict) -> None:
+        """
+        locate user and update info at keyword argument
+        """
+        u = self.find_user_by(id=user_id)
+        for k in kwargs:
+            if hasattr(u, k):
+                u.k = kwargs[k]
+            else:
+                raise ValueError
+        self._session.commit()
