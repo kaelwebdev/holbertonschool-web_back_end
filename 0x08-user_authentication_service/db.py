@@ -52,13 +52,4 @@ class DB:
         the first row found in the users table as
         filtered by the method’s input arguments
         """
-        if not kwargs:
-            raise InvalidRequestError
-        c_names = User.__table__.columns.keys()
-        for k in kwargs.keys():
-            if k not in c_names:
-                raise InvalidRequestError
-        u = self._session.query(User).filter_by(**kwargs).first()
-        if u is None:
-            raise NoResultFound
-        return u
+        return self._session.query(User).filter_by(**kwargs).one()
