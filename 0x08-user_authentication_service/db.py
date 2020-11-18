@@ -12,6 +12,7 @@ from user import Base
 from typing import TypeVar
 from user import User
 
+
 class DB:
     """
     Data Base with SQLAlchemy
@@ -44,4 +45,3 @@ class DB:
         self._session.add(n_user)
         self._session.commit()
         return n_user
-
