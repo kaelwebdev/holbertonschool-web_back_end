@@ -17,3 +17,23 @@ def _hash_password(password: str) -> str:
     It is an encryption complicate dictionary attacks
     """
     return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+
+
+class Auth:
+    """
+    Auth class
+    note: Auth._db is a private property
+    and should NEVER be used from outside the class.
+    """
+
+    def __init__(self):
+        """ Initialize database """
+        self._db = DB()
+
+    def register_user(self, email: str, password: str) -> TypeVar('User'):
+        """ add a new user """
+        u = self._db.find_user_by(email=email)
+        if u:
+            raise ValueError("User {email} already exists")
+        n_user = self._db.add_user(email, _hash_password(password))
+        return n_user
