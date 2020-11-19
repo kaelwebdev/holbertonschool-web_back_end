@@ -7,6 +7,7 @@ from flask import Flask, jsonify, request, abort
 app = Flask(__name__)
 AUTH = Auth()
 
+
 @app.route('/', methods=['GET'], strict_slashes=False)
 def welcome() -> str:
     """
