@@ -18,17 +18,20 @@ def welcome() -> str:
 
 
 @app.route('/users', methods=['POST'], strict_slashes=False)
-def users() -> str:
+def reg_user() -> str:
     """
     new user
     """
-    email = request.form.get('email')
-    pwd = request.form('password')
     try:
-        AUTH.register_user(email, pwd)
-        return jsonify({"email": email}, {"message", "user created"}), 200
-    except Exception:
-        return jsonify({"message", "email already registered"}), 400
+        email = request.form['email']
+        pwd = request.form['password']
+    except KeyError:
+        abort(400)
+    try:
+        user = AUTH.register_user(email, pwd)
+    except ValueError:
+        return jsonify({"message": "email already registered"}), 400
+    return jsonify({"email": email, "message": "user created"})
 
 
 if __name__ == "__main__":
