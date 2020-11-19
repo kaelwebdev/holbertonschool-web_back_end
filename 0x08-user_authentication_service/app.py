@@ -17,7 +17,7 @@ def welcome() -> str:
     return jsonify({"message": "Bienvenue"})
 
 
-@app_views.route('/users', methods=['POST'], strict_slashes=False)
+@app.route('/users', methods=['POST'], strict_slashes=False)
 def users() -> str:
     """
     new user
