@@ -9,6 +9,7 @@ from typing import TypeVar
 import bcrypt
 from uuid import uuid4
 from typing import Union
+from sqlalchemy.orm.exc import NoResultFound
 
 
 def _hash_password(password: str) -> str:
@@ -30,10 +31,13 @@ class Auth:
         """ Initialize database """
         self._db = DB()
 
-    def register_user(self, email: str, password: str) -> TypeVar('User'):
+    def register_user(self, email: str, password: str) -> User:
         """ add a new user """
-        u = self._db.find_user_by(email=email)
-        if u:
-            raise ValueError("User {email} already exists")
+        try:
+            u = self._db.find_user_by(email=email)
+            if u:
+                raise ValueError("User {} already exists".format(email))
+        except NoResultFound:
+            pass
         n_user = self._db.add_user(email, _hash_password(password))
         return n_user

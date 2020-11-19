@@ -52,7 +52,10 @@ class DB:
         the first row found in the users table as
         filtered by the method’s input arguments
         """
-        return self._session.query(User).filter_by(**kwargs).one()
+        u = self._session.query(User).filter_by(**kwargs).first()
+        if not u:
+            raise NoResultFound
+        return u
 
     def update_user(self, user_id: int, **kwargs) -> None:
         """
