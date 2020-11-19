@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
-
+"""
+core app
+"""
 from flask import Flask, jsonify
 
 app = Flask(__name__)
 
 
 @app.route('/', methods=['GET'])
-def hello_world() -> str:
+def welcome() -> str:
     """
     test function
     """
