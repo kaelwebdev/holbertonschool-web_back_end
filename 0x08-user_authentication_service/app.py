@@ -7,12 +7,12 @@ from flask import Flask, jsonify
 app = Flask(__name__)
 
 
-@app.route('/', methods=['GET'])
+@app.route('/', methods=['GET'], strict_slashes=False)
 def welcome() -> str:
     """
     test function
     """
-    return jsonfy({"message": "Bienvenue"})
+    return jsonify({"message": "Bienvenue"})
 
 
 if __name__ == "__main__":
