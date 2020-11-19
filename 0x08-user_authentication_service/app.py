@@ -3,6 +3,7 @@
 core app
 """
 from flask import Flask, jsonify, request, abort
+from auth import Auth
 
 app = Flask(__name__)
 AUTH = Auth()
