@@ -57,7 +57,7 @@ def logout():
     s_id = request.cookies.get("session_id")
     try:
         u = AUTH.get_user_from_session_id(s_id)
-        AUTH.destroy_session(u)
+        AUTH.destroy_session(u.id)
         return redirect("/")
     except Exception:
         abort(403)
