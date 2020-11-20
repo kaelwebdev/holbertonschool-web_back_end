@@ -99,7 +99,7 @@ def update_password() -> str:
     new_pwd = request.form.get("new_password")
     try:
         AUTH.update_password(token, new_pwd)
-        return jsonify({"email": email, "message": "Password Updated"}), 403
+        return jsonify({"email": email, "message": "Password updated"}), 403
     except Exception:
         abort(403)
 
