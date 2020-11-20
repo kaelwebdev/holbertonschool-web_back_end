@@ -64,7 +64,7 @@ class DB:
         u = self.find_user_by(id=user_id)
         for k in kwargs:
             if hasattr(u, k):
-                u.k = kwargs[k]
+                setattr(u, k, kwargs[k])
             else:
                 raise ValueError
         self._session.commit()
