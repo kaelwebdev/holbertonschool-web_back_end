@@ -71,7 +71,7 @@ def profile() -> str:
     s_id = request.cookies.get('session_id')
     try:
         u = AUTH.get_user_from_session_id(s_id)
-        return jsonify({"email", u.email}), 200
+        return jsonify({"email": u.email}), 200
     except Exception:
         abort(403)
 
