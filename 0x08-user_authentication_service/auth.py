@@ -71,7 +71,7 @@ class Auth:
         except Exception:
             return None
 
-    def get_user_from_session_id(session_id: str) -> Union[str, None]:
+    def get_user_from_session_id(self, session_id: str) -> Union[str, None]:
         """
         find user by session id
         """
@@ -83,14 +83,14 @@ class Auth:
         except Exception:
             return None
 
-    def destroy_session(user_id: int) -> None:
+    def destroy_session(self, user_id: int) -> None:
         """
         session = None
         """
         self._db.update_user(user_id, session_id=None)
         return None
 
-    def get_reset_password_token(email: str) -> str:
+    def get_reset_password_token(self, email: str) -> str:
         """
         find user corresponding to email
         """
@@ -102,7 +102,7 @@ class Auth:
         self._db.update_user(u.id, reset_token=uuid)
         return uuid
 
-    def update_password(reset_token: str, password: str) -> None:
+    def update_password(self, reset_token: str, password: str) -> None:
         """
         update password
         """
