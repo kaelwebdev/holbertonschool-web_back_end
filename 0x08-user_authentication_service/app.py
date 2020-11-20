@@ -82,13 +82,10 @@ def get_reset_password_token() -> str:
     new reset password token
     """
     email = request.form.get('email')
-    print(email)
     try:
         token = AUTH.get_reset_password_token(email)
-        print(token)
         return jsonify({"email": email, "reset_token": token}), 200
     except Exception:
-        print("buuuuu")
         abort(403)
 
 
