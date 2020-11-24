@@ -49,3 +49,22 @@ class TestGithubOrgClient(TestCase):
         test for client._has_licence
         """
         self.assertEqual(GithubOrgClient.has_license(repo, license), expected)
+
+    @patch('client.get_json')
+    def test_public_repos(self, mock1):
+        """
+        test for client._public_repos
+        """
+        a = {"name": "a", "license": {"key": "k"}}
+        b = {"name": "b", "license": {"key": "l"}}
+        c = {"name": "c"}
+        method = 'client.GithubOrgClient._public_repos_url'
+        mock1.return_value = [a, b, c]
+        with patch(method, PropertyMock(return_value="www.k.com")) as m2:
+            goc = GithubOrgClient("my_goc")
+            self.assertEqual(goc.public_repos(), ['a', 'b', 'c'])
+            self.assertEqual(goc.public_repos("k"), ['a'])
+            self.assertEqual(goc.public_repos("c"), [])
+            self.assertEqual(goc.public_repos(17), [])
+            mock1.assert_called_once_with("www.k.com")
+            m2.assert_called_once_with()
