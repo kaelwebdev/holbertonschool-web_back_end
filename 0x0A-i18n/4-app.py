@@ -11,6 +11,7 @@ import os
 
 app = Flask(__name__)
 babel = Babel(app)
+app.secret_key = os.environ.get("FLASK_SECRET_KEY", "CASA123")
 
 
 class Config:
