@@ -1,5 +1,5 @@
 -- creates a stored procedure ComputeAverageScoreForUser
--- that computes and store the average score for a student.
+-- that computes and store the average score for a student
 DELIMITER $$
 DROP PROCEDURE IF EXISTS ComputeOverallScoreForUser;
 CREATE PROCEDURE ComputeOverallScoreForUser ( IN user_id INT )
@@ -12,4 +12,5 @@ BEGIN
         GROUP BY corrections.user_id
     )
     WHERE id=user_id;
-END$$
+END $$
+
