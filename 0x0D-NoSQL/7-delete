@@ -1,0 +1,4 @@
+// Delete document in the collection by key-value
+db.school.deleteMany(
+    { "name": "Holberton school" }
+)
