@@ -51,7 +51,7 @@ const app = http.createServer((req, res) => {
       ({
         total, csCount, csStudents, sweCount, sweStudents,
       }) => {
-	res.statusCode = 200;
+        res.statusCode = 200;
         res.write('This is the list of our students\n');
         res.write(`Number of students: ${total}\n`);
         res.write(
