@@ -42,6 +42,7 @@ function countStudents(path) {
 }
 
 const app = http.createServer((req, res) => {
+  res.setHeader('Content-Type', 'text/plain');
   if (req.url === '/' && req.method === 'GET') {
     res.write('Hello Holberton School!');
     res.end();
@@ -50,13 +51,14 @@ const app = http.createServer((req, res) => {
       ({
         total, csCount, csStudents, sweCount, sweStudents,
       }) => {
+	res.statusCode = 200;
         res.write('This is the list of our students\n');
         res.write(`Number of students: ${total}\n`);
         res.write(
           `Number of students in CS: ${csCount}. List: ${csStudents}\n`,
         );
         res.write(
-          `Number of students in SWE: ${sweCount}. List: ${sweStudents}\n`,
+          `Number of students in SWE: ${sweCount}. List: ${sweStudents}`,
         );
         res.end();
       },
