@@ -54,7 +54,7 @@ const app = http.createServer((req, res) => {
           `Number of students in CS: ${csCount}. List: ${csStudents}\n`,
         );
         res.write(
-          `Number of students in SWE: ${sweCount}. List: ${sweStudents}`,
+          `Number of students in SWE: ${sweCount}. List: ${sweStudents}\n`,
         );
         res.end();
       },
