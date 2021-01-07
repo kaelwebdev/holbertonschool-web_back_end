@@ -1,5 +1,6 @@
 const http = require('http');
 const fs = require('fs');
+const args = process.argv.slice(2);
 
 const PORT = 1245;
 
@@ -44,7 +45,7 @@ const app = http.createServer((req, res) => {
     res.write('Hello Holberton School!');
     res.end();
   } else if (req.url === '/students' && req.method === 'GET') {
-    countStudents('database.csv').then(
+    countStudents(args[0]).then(
       ({
         total, csCount, csStudents, sweCount, sweStudents,
       }) => {
