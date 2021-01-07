@@ -5,7 +5,7 @@ module.exports = function countStudents(path) {
     fs.readFile(path, { encoding: 'utf-8' }, (err, data) => {
       try {
         if (err) reject(Error('Cannot load the database'));
-        const totalData = data.split('\n').slice(1);
+        const totalData = data.split('\n').filter((line) => line).slice(1);
 
         console.log(`Number of students: ${totalData.length}`);
 
