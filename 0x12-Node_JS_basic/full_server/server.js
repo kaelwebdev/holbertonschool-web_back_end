@@ -6,7 +6,7 @@ const PORT = 1245;
 
 const URLPREFIX = '/';
 
-app.use('/', router);
+app.use(URLPREFIX, router);
 
 app.listen(PORT, () => {
   console.log(`Listening at http://localhost:${PORT}`);

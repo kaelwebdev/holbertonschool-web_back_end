@@ -2,8 +2,8 @@ const utils = require('../utils');
 
 class StudentsController {
   static getAllStudents(request, response) {
-      utils.readDatabase(process.argv[2])
-      .then(({studentsInfo}) => {
+    utils.readDatabase(process.argv[2])
+      .then(({ studentsInfo }) => {
         let csCount = 0;
         let csStudents = '';
 
@@ -20,8 +20,8 @@ class StudentsController {
             sweStudents += sweStudents ? `, ${info[0]}` : info[0];
           }
         });
-	response.setHeader('Content-Type', 'text/plain');
-	response.statusCode = 200;
+        response.setHeader('Content-Type', 'text/plain');
+        response.statusCode = 200;
         response.write('This is the list of our students\n');
         response.write(`Number of students: ${studentsInfo.length}\n`);
         response.write(
@@ -38,8 +38,8 @@ class StudentsController {
   static getAllStudentsByMajor(request, response) {
     if (!['SWE', 'CS'].includes(request.params.major)) response.status(500).send('Major parameter must be CS or SWE');
     utils.readDatabase(process.argv[2])
-      .then(({studentsInfo}) => {
-	let csCount = 0;
+      .then(({ studentsInfo }) => {
+        let csCount = 0;
         let csStudents = '';
 
         let sweCount = 0;
@@ -56,18 +56,16 @@ class StudentsController {
           }
         });
 
-        if (request.params.major == 'CS' &&  csCount > 0) {
+        if (request.params.major === 'CS' && csCount > 0) {
           response.send(`List: ${csStudents}`);
-	}
-        else if (request.params.major == 'SWE' &&  sweCount > 0){
+        } else if (request.params.major === 'SWE' && sweCount > 0) {
           response.send(`List: ${sweStudents}`);
         } else {
-	  console.log('ups!!!')
-	  response.status(500).send('Cannot load the database')
-	}
+          response.status(500).send('Cannot load the database');
+        }
       })
       .catch((err) => { response.send(err.message); });
-  };
+  }
 }
 
 module.exports = StudentsController;
