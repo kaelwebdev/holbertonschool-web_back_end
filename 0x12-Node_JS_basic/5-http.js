@@ -1,7 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 
-const args = process.argv
+const args = process.argv;
 
 const PORT = 1245;
 
