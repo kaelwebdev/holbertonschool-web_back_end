@@ -62,7 +62,7 @@ const app = http.createServer((req, res) => {
         );
         res.end();
       },
-    ).catch((err) => { throw err; });
+    ).catch((err) => { res.end(err.message); });
   } else { res.end(); }
 }).listen(PORT);
 
