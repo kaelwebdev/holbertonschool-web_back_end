@@ -69,7 +69,7 @@ app.get('/students', (req, res) => {
       },
     ).catch((err) => { res.end(err.message); });
   } else { res.end(); }
-})
+});
 
 app.listen(PORT);
 
