@@ -67,7 +67,10 @@ app.get('/students', (req, res) => {
         );
         res.end();
       },
-    ).catch((err) => { res.end(err.message); });
+    ).catch((err) => {
+      res.end(`This is the list of our students
+${err.message}`);
+    });
   } else { res.end(); }
 });
 
