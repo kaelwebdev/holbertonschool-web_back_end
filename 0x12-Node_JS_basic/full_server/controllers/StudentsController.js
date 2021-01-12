@@ -23,7 +23,6 @@ class StudentsController {
         response.setHeader('Content-Type', 'text/plain');
         response.statusCode = 200;
         response.write('This is the list of our students\n');
-        response.write(`Number of students: ${studentsInfo.length}\n`);
         response.write(
           `Number of students in CS: ${csCount}. List: ${csStudents}\n`,
         );
