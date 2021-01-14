@@ -15,6 +15,6 @@ describe('calculateNumber', () => {
     assert.equal(calculateNumber(1.5, 3.7), 6)
   })
   it('negative number', () => {
-    assert.equal(calculateNumber(-1.5, 1.5), 0)
+    assert.equal(calculateNumber(-1.5, 1.5), 1)
   })
 })
