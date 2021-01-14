@@ -26,4 +26,10 @@ describe('calculateNumber', () => {
   it('2.999 + 1', () => {
     assert.equal(calculateNumber(2.99, 1), 4)
   })
+  it('1.1 + 0', () => {
+    assert.equal(calculateNumber(1.1, 0), 1)
+  })
+  it('-0.19 + 0', () => {
+    assert.equal(calculateNumber(-0.19, 0), 0)
+  })
 })
