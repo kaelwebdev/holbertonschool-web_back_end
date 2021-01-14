@@ -14,4 +14,7 @@ describe('calculateNumber', () => {
   it('correctly adds 1.5 and 3.7', () => {
     assert.equal(calculateNumber(1.5, 3.7), 6)
   })
+  it('negative number', () => {
+    assert.equal(calculateNumber(-1.5, 1.5), 0)
+  })
 })
