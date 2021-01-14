@@ -20,4 +20,7 @@ describe('calculateNumber', () => {
   it('negative number + negative number', () => {
     assert.equal(calculateNumber(-1, -1), -2)
   })
+  it('zero + zero', () => {
+    assert.equal(calculateNumber(0, 0), 0)
+  })
 })
