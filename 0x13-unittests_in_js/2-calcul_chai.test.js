@@ -17,20 +17,8 @@ describe('calculateNumber', () => {
   it('1.1 + 1.2', () => {
     expect(calculateNumber('SUM', 1.1, 1.2)).to.equal(2)
   })
-  it('1 - 3', () => {
-    expect(calculateNumber('SUBTRACT', 1, 3)).to.equal(-2)
-  })
-  it('1 - 3.7', () => {
-    expect(calculateNumber('SUBTRACT', 1, 3.7)).to.equal(-3)
-  })
-  it('1.2 - 3.7', () => {
-    expect(calculateNumber('SUBTRACT', 1.2, 3.7)).to.equal(-3)
-  })
-  it('1.5 - 3.7', () => {
-    expect(calculateNumber('SUBTRACT', 1.5, 3.7)).to.equal(-2)
-  })
-  it('1.1 - 1.2', () => {
-    expect(calculateNumber('SUBTRACT', 1.1, 1.2)).to.equal(0)
+  it('1.4 - 4.5', () => {
+    expect(calculateNumber('SUBTRACT', 1.4, 4.5)).to.equal(-4)
   })
   it('1.4 / 4.5', () => {
     expect(calculateNumber('DIVIDE', 1.4, 4.5)).to.equal(0.2)
