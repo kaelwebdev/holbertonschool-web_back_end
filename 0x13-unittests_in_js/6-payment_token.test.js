@@ -5,7 +5,9 @@ describe('getPaymentTokenFromAPI', () => {
     it('true is passed', (done) => {
         getPaymentTokenFromApi(true).then(function(r) {
             expect(r).to.eql({ data: 'Successful response from the API' })
-        })
-        done();
+            done();
+        }).catch((err) => {
+            done(err);
+        });
     })
 })
