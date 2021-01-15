@@ -32,5 +32,10 @@ describe('calculateNumber', () => {
   it('1.1 - 1.2', () => {
     assert.equal(calculateNumber('SUBTRACT', 1.1, 1.2), 0)
   })
-
+  it('1.4 / 4.5', () => {
+    assert.equal(calculateNumber('DIVIDE', 1.4, 4.5), 0.2)
+  })
+  it('1.4 / 0', () => {
+    assert.equal(calculateNumber('DIVIDE', 1.4, 0), 'Error')
+  })
 })
