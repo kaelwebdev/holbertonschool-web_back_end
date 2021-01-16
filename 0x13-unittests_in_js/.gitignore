@@ -2,3 +2,4 @@
 /8-api/node_modules
 /9-api/node_modules
 /10-api/node_modules
+/**/package-lock.json
